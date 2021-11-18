@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Record extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'bgl',
+        'user_id',
+        'notes',
+    ];    
 }

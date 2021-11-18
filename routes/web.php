@@ -23,7 +23,15 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
+
+Route::get('/records/create', [RecordsController::class,'create']);
 Route::get('/records', [RecordsController::class,'index'])->name('records');
+Route::get('/records/{id}/edit', [RecordsController::class,'edit']);
+Route::get('/records/{id}', [RecordsController::class,'show']);
+Route::post('/records', [RecordsController::class,'store']);
+Route::put('/records/{id}', [RecordsController::class,'update']);
+Route::delete('/records/{id}', [RecordsController::class,'destroy']);
+
 
 Route::get('/about', function(){
     return view('pages.about');  
