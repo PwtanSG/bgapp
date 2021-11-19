@@ -27,7 +27,7 @@
                 @php
                     $i++
                 @endphp
-                <tr>
+                <tr onClick="location.href='records/{{ $record->id}}'">
                     <td scope="row">{{$i}}</td>
                     <td>{{ $record->created_at }}</td>
                     <td>{{ $record->bgl }}</td>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <h1>Create Post</h1>
-
+    <a href="/records" class="btn btn-default">Go Back</a>
+    <h1>Edit Record</h1>
     <div class="container mt-5">
 
         <!-- Success message -->

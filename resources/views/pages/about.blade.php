@@ -2,9 +2,9 @@
 @section('content')
     <div class="container">
         <div class="jumbotron">
-            <h1>Navbar example</h1>
-            <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
-            <a class="btn btn-lg btn-primary" href="/docs/4.6/components/navbar/" role="button">View navbar docs &raquo;</a>
+            <h1>About</h1>
+            <p class="lead">This app is built using Laravel with MySQL.</p>
+            <a class="btn btn-lg btn-primary" href="" role="button">Like</a>
           </div>        
     </div>
 @endsection

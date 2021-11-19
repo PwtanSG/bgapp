@@ -16,7 +16,7 @@ class RecordsController extends Controller
     {
         //$records = Record::paginate(5);
         $userid = auth()->user()->id;
-        $records = Record::where('user_id', $userid)->get();
+        $records = Record::where('user_id', $userid)->paginate(10);
         return view('records.index', ['records' => $records]);
     }
 
