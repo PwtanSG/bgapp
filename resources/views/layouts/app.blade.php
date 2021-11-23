@@ -15,8 +15,10 @@
 
 <body>
     @include('inc.navbar')
-    <div class="container">
-        @yield('content')
+    <div class="content">
+        <div class="container">
+            @yield('content')
+        </div>
     </div>
     @include('inc.footer')
 

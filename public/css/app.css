@@ -231,10 +231,19 @@ th {
   background-color: #0f0e0f;
   margin: 0px auto;
   padding: 20px 0px; 
-  position: fixed;
+  position:absolute;
+  width: 100%;
+  bottom:0;  
+  /* position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;  
+  width: 100%;
+  */  
+}
+@media screen and (max-width: 480px) {
+  .footer { 
+    position: relative;
+  }
 }
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
