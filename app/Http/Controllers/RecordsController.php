@@ -39,11 +39,13 @@ class RecordsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'bgl' => 'required',
-            'notes' => 'required'
+            'bgl' => 'required|numeric|min:3',
+            'notes' => 'required|max:255'
         ], [
-            'title.required' => 'title is required',
-            'body.required' => 'body is required'
+            'bgl.required' => 'numberic input is required',
+            'bgl.numeric' => 'numberic input is required',
+            'bgl.min' => 'min 3.0',
+            'notes.required' => 'input is required',
         ]);
 
         Record::create([
@@ -58,11 +60,13 @@ class RecordsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'bgl' => 'required',
-            'notes' => 'required'
+            'bgl' => 'required|numeric|min:3',
+            'notes' => 'required|max:255'
         ], [
-            'title.required' => 'title is required',
-            'body.required' => 'body is required'
+            'bgl.required' => 'numberic input is required',
+            'bgl.numeric' => 'numberic input is required',
+            'bgl.min' => 'min 3.0',
+            'notes.required' => 'input is required',
         ]);
 
         $record = Record::find($id);
