@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Record;
+use App\Models\User;
 
 class RecordsController extends Controller
 {
@@ -18,22 +19,24 @@ class RecordsController extends Controller
         $userid = auth()->user()->id;
         $records = Record::where('user_id', $userid)->paginate(10);
         return view('records.index', ['records' => $records]);
+        //$user = User::find($userid);
+        //return view('records.index', ['records' => $user->records]);
+        
     }
 
     public function show($id)
     {
-        //$record = Record::where('id', $id)->get();
-       //$record = ['test'=>"testing"];
-        $record = Record::find($id);
-        //dd($record);
-        //return view('records.show')->with('record', $record);
+        $userid = auth()->user()->id;
+        $record = Record::findOrFail($id);
+        if ($userid != $record->user_id){
+            abort(404);
+        }
         return view('records.show', ['record'=> $record]);
     }
 
     public function create()
     {
         return view('records.create');
-        //return '123';
     }
 
     public function store(Request $request)
@@ -68,27 +71,29 @@ class RecordsController extends Controller
             'bgl.min' => 'min 3.0',
             'notes.required' => 'input is required',
         ]);
-
-        $record = Record::find($id);
+    
+        $record = Record::findOrFail($id);
         $record->bgl = $request->input('bgl');
         $record->notes = $request->input('notes');
-        $record->save();
-
-        return redirect('/records')->with('success', 'Record Updated.');        
+        $record->save();        
+        return redirect('/records')->with('success', 'Record Updated.');    
     }
 
     public function edit($id)
     {
-        $record = Record::find($id);
-        return view('records.edit')->with('record', $record);        
+        $userid = auth()->user()->id;
+        $record = Record::findOrFail($id);       
+        if ($userid != $record->user_id){
+            abort(404);
+        }           
+        return view('records.edit')->with('record', $record);     
     }
 
     public function destroy($id)
-    {
-        $record = Record::find($id);
+    {     
+        $record = Record::findOrFail($id);
         $record->delete();
         return redirect('/records')->with('success', 'Record deleted.');        
-
     }
 
 }

@@ -240,6 +240,19 @@ th {
   width: 100%;
   */  
 }
+
+.m-right{
+  margin-right: 10px;
+}
+
+.m-top{
+  margin-top: 8px;
+}
+
+.m-bottom{
+  margin-bottom: 8px;
+}
+
 @media screen and (max-width: 480px) {
   .footer { 
     position: relative;

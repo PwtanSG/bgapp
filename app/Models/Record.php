@@ -13,5 +13,10 @@ class Record extends Model
         'bgl',
         'user_id',
         'notes',
-    ];    
+    ];   
+    
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

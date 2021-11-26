@@ -35,8 +35,8 @@
                 </span>
             @endif
 
-            <input type="submit" name="send" value="Submit" class="btn btn-primary">
+            <input type="submit" name="send" value="Submit" class="btn btn-primary col-xs-12 col-sm-1">
         </form>
     </div>
-
+    <br>
 @endsection
