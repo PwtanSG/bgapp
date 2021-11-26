@@ -29,7 +29,7 @@ class RecordsController extends Controller
         $userid = auth()->user()->id;
         $record = Record::findOrFail($id);
         if ($userid != $record->user_id){
-            abort(404);
+            abort(403);
         }
         return view('records.show', ['record'=> $record]);
     }
@@ -84,14 +84,18 @@ class RecordsController extends Controller
         $userid = auth()->user()->id;
         $record = Record::findOrFail($id);       
         if ($userid != $record->user_id){
-            abort(404);
+            abort(403);
         }           
         return view('records.edit')->with('record', $record);     
     }
 
     public function destroy($id)
     {     
+        $userid = auth()->user()->id;
         $record = Record::findOrFail($id);
+        if ($userid != $record->user_id){
+            abort(403);
+        }
         $record->delete();
         return redirect('/records')->with('success', 'Record deleted.');        
     }
